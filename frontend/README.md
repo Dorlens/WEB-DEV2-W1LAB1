@@ -1,16 +1,90 @@
-# React + Vite
+# Project — Run Backend & Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Quick instructions to run both backend and frontend on macOS. Adjust commands to match the actual backend framework in the `backend` folder.
 
-Currently, two official plugins are available:
+## Prerequisites
+- Node.js (16+) and npm or yarn
+- Python 3.8+ if backend is Python 
+- A virtual environment for Python projects (recommended)
+- Git (optional)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Folder layout (expected)
+- backend/      ← your API ( FastAPI)
+- frontend/     ← React app (uses npm/yarn)
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Frontend (React)
+1. Open a terminal and go to the frontend folder:
+   ```
+   cd "/Users/dorlensjanvier/DJ web dev2 in class assignment1/frontend"
+   ```
+2. Install dependencies:
+   ```
+   npm install
+   # or
+   yarn
+   ```
+3. Start dev server:
+   ```
+   npm start
+   # or
+   yarn start
+   ```
+4. Open the app in your browser:
+   ```
+   http://localhost:3000
+   ```
+Note: Your React app fetches the backend at `http://127.0.0.1:8000/items` by default. If your backend runs on a different host/port, update the URL in `frontend/src/App.jsx`.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Backend — common commands
+
+Replace `backend` with the actual backend folder name if different.
+
+```
+
+### FastAPI (uvicorn)
+```
+cd "/Users/dorlensjanvier/DJ web dev2 in class assignment1/backend"
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+uvicorn main:app --reload --host 127.0.0.1 --port 8000
+```
+
+
+### Node / Express
+```
+cd "/Users/dorlensjanvier/DJ web dev2 in class assignment1/backend/app"
+npm install
+npm run dev   # or npm start
+# or
+node index.js
+```
+
+---
+
+## Verify the API
+From a terminal:
+```
+curl http://127.0.0.1:8000/items
+```
+You should get JSON like:
+```
+{"Users":[{"id":1,"userName":"Dorlens"}, ...]}
+```
+
+If you see raw JSON in the browser, you likely opened the backend URL directly. Open the React frontend at http://localhost:3000 to see the UI.
+
+---
+
+## Common troubleshooting
+- Make sure backend and frontend are running simultaneously.
+- If CORS errors appear, enable CORS in your backend ( FastAPI CORSMiddleware, etc.).
+- If the frontend fetches a different URL, update `frontend/src/App.jsx` to point to the correct backend host/port.
+- Activate the Python venv before installing or running Python backends:
+  ```
+  source venv/bin/activate
+  ```
