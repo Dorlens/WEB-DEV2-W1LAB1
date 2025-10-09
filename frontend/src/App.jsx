@@ -101,7 +101,7 @@ function App() {
           type="text"
           value={newUser}
           onChange={(e) => setNewUser(e.target.value)}
-          placeholder="Enter employee name"
+          placeholder="Enter employee names"
           className="form-control me-2"
           style={{ borderRadius: "5px", padding: "10px" }}
         />
