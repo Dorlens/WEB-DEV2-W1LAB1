@@ -63,7 +63,7 @@ function App() {
       </div>
       <div className="container mt-5 pt-5">
       <h3 className="text-center fw-bold text-dark mb-5">
-        Employees User List
+        Employees List
       </h3>
 
       <ul style={{ listStyleType: "decimal", color: "blue", paddingLeft: "1rem" }}>
@@ -108,14 +108,15 @@ function App() {
         <button
           onClick={handleAddUser}
           style={{
-            borderRadius: "5px",
-            padding: "6px 10px",
+            borderRadius: "16px",
+            padding: "2px 60px",
             backgroundColor: "blue",
             color: "white",
             border: "none",
+            whiteSpace: "nowrap",
           }}
         >
-          Add User
+          Add Employee
         </button>
       </div>
     </div>
